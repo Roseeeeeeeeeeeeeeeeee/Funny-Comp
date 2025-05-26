@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import Carousel from '@/components/Carousel/index(type2).vue'
+import Carousel from '@/components/Carousel/index(type1).vue'
 console.log(import.meta.url);
 const data = [
   new URL('./assets/wp1.jpeg', import.meta.url),

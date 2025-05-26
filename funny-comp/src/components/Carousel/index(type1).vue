@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { ref, computed, nextTick , onUnmounted } from 'vue';
+import { ref, computed, nextTick, onUnmounted } from 'vue';
 export default {
     props: {
         imgs: {
@@ -43,10 +43,15 @@ export default {
         height: {
             type: Number,
             default: 400
-        }
+        },
+        changeDuration: {
+        //切换下一张图的间隔时间
+        type: Number,
+        default: 3000
+    }
     },
     setup(props, ctx) {
-
+        let interval = null
         const container = ref(null)
         const index = ref(1)//当前图片，第一张图对应1
         const modifyImgs = computed(() => {
@@ -64,6 +69,7 @@ export default {
          * @param i 
          */
         const moveTo = (i) => {
+            clearInterval(interval)
             if (i === 1 && index.value === props.imgs.length) {
                 //从最后一张跳第一张
                 rightNext()
@@ -78,12 +84,13 @@ export default {
                 }
                 //这里仍使用props.imgs的长度是保证不会跳到我们为实现无缝效果而添加的两张额外图片
                 if (i > props.imgs.length) {
-                    i = props.imgs.length 
+                    i = props.imgs.length
                 }
                 index.value = i
             }
+            startCircle()
         }
-        let timer =ref(null)
+        let timer = ref(null)
         /**
          * 往左下一张
          */
@@ -93,8 +100,8 @@ export default {
                 openTransition.value = false;
                 index.value = modifyImgs.value.length - 1;
                 await nextTick()
-              timer =  setTimeout(() => {
-                //然后打开过渡效果再往左滚动一张图就是最后一张了
+                timer = setTimeout(() => {
+                    //然后打开过渡效果再往左滚动一张图就是最后一张了
                     openTransition.value = true;
                     moveTo(props.imgs.length);
                 }, 50)
@@ -122,9 +129,21 @@ export default {
 
 
         }
-        onUnmounted(()=>{
+        onUnmounted(() => {
             clearTimeout(timer.value)
+            clearInterval(interval)
         })
+        const startCircle = () => {
+            interval = setInterval(() => {
+                let targetIndex = (index.value + 1) % (props.imgs.length + 1);
+                if (targetIndex === 0) {
+                    targetIndex = 1
+                }
+                moveTo(targetIndex)
+
+            }, props.changeDuration)
+        }
+        startCircle()
         return {
             index,
             moveTo,
