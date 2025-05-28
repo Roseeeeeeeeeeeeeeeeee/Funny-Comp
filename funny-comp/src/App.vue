@@ -1,20 +1,15 @@
 <template>
   <div class="app-container">
-    <Carousel :imgs="data" />
+   <Fanshaped
+   color="#000"
+   :radius="600"
+   :startDeg="10"
+   :endDeg="80"/>
   </div>
 </template>
 
 <script setup>
-import Carousel from '@/components/Carousel/index(type1).vue'
-console.log(import.meta.url);
-const data = [
-  new URL('./assets/wp1.jpeg', import.meta.url),
-  new URL('./assets/wp4.jpeg', import.meta.url),
-  new URL('./assets/wp5.jpg', import.meta.url),
-  new URL('./assets/wp6.jpeg', import.meta.url),
-  new URL('./assets/wp2.jpg', import.meta.url),
-]
-
+import Fanshaped from '@/components/Fanshaped/index.vue'
 </script>
 
 <style scoped lang="less">
