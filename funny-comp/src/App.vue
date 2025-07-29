@@ -1,15 +1,16 @@
 <template>
-  <div class="app-container">
-   <Fanshaped
-   color="#000"
-   :radius="600"
-   :startDeg="10"
-   :endDeg="80"/>
-  </div>
+    <div class="app-container">
+        <Fanshaped
+            color="#000"
+            :radius="600"
+            :start-deg="10"
+            :end-deg="80"
+        />
+    </div>
 </template>
 
 <script setup>
-import Fanshaped from '@/components/Fanshaped/index.vue'
+import Fanshaped from '@/components/Fanshaped/index.vue';
 </script>
 
 <style scoped lang="less">

@@ -3,13 +3,13 @@
 </script>
 
 <template>
-  <div class="material-input-container">
-    <div class="content">
-      <input required id="username" type="text">
-      <span class="bar"></span>
-      <label for="username">User Name</label>
+    <div class="material-input-container">
+        <div class="content">
+            <input id="username" required type="text">
+            <span class="bar" />
+            <label for="username">User Name</label>
+        </div>
     </div>
-  </div>
 </template>
 
 <style scoped lang="less">
@@ -33,7 +33,6 @@
       font-size: 16px;
       border-bottom: 1px solid gray;
       outline: none;
-    
 
       &:focus~.bar {
         width: 100%;
@@ -59,7 +58,7 @@
     }
 
     .bar {
-     
+
       left: 50%;
       bottom: -4px;
       transform: translate(-50%,-50%);
