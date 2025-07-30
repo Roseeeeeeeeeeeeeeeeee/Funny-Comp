@@ -5,7 +5,7 @@
 <template>
     <div class="material-input-container">
         <div class="content">
-            <input id="username" required type="text">
+          <input id="username" required type="text">
             <span class="bar" />
             <label for="username">User Name</label>
         </div>

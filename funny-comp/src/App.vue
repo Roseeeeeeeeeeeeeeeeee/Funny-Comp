@@ -1,16 +1,12 @@
 <template>
-    <div class="app-container">
-        <Fanshaped
-            color="#000"
-            :radius="600"
-            :start-deg="10"
-            :end-deg="80"
-        />
-    </div>
+  <div class="app-container">
+    <authorization-button height="100" width="300" color="green" />
+   
+  </div>
 </template>
 
 <script setup>
-import Fanshaped from '@/components/Fanshaped/index.vue';
+import AuthorizationButton from '@/components/AuthorizationButtons/index.vue'
 </script>
 
 <style scoped lang="less">
@@ -19,4 +15,5 @@ import Fanshaped from '@/components/Fanshaped/index.vue';
 .app-container {
   .self-fill(fixed)
 }
+
 </style>
