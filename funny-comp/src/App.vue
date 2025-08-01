@@ -1,12 +1,17 @@
 <template>
   <div class="app-container">
-    <authorization-button height="100" width="300" color="green" />
-   
+    <h1>首页</h1>
+    <button @click="triggerError">触发错误</button>
+    <ErrorLog/>
   </div>
 </template>
 
 <script setup>
-import AuthorizationButton from '@/components/AuthorizationButtons/index.vue'
+function triggerError(){
+
+  throw new Error('出错啦！！')
+
+}
 </script>
 
 <style scoped lang="less">
